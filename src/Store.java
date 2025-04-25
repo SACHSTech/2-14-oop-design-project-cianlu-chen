@@ -14,17 +14,25 @@ public class Store {
         shoppingCarts.add(shoppingCart);
     }
     
-    public int numCarts(){
+    public int getNumCarts(){
         return shoppingCarts.size();
     }
 
-    public String getCarts(int num){
+    public String getAllCarts(int num){
         List<String> carts = new ArrayList<>();
 
         for(int i = 0; i < shoppingCarts.size(); i++){
-            carts.add(shoppingCarts.get(i).getUser() + ": " + shoppingCarts.get(i).getItems() + " items");
+            carts.add(shoppingCarts.get(i).getUser() + ": " + shoppingCarts.get(i).getNumItems() + " items (User ID: " + shoppingCarts.get(i).getUserID() + ")");
         }
 
         return carts.get(num);
     }
+
+    // public void getOneCart(int num){
+    //     for(int i = 0; i < shoppingCarts.size(); i++){
+    //         if(shoppingCarts.get(i).getUserID() == num){
+    //             System.out.println(shoppingCarts.get(i).getUser() + "'s cart has " + shoppingCarts.get(i).getNumItems() + " items:");
+    //         }
+    //     }
+    // }
 }
