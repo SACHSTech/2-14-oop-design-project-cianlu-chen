@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Store {
-    private int sales;
-    private double revenue;
+    private int sales = 0;
+    private double revenue = 0.0;
     private List<ShoppingCart> shoppingCarts;
 
     public Store(){
@@ -13,12 +13,16 @@ public class Store {
     public void addCart(ShoppingCart shoppingCart){
         shoppingCarts.add(shoppingCart);
     }
+
+    public ShoppingCart getShoppingCart(int i){
+        return shoppingCarts.get(i);
+    }
     
     public int getNumCarts(){
         return shoppingCarts.size();
     }
 
-    public String getAllCarts(int num){
+    public String getACart(int num){
         List<String> carts = new ArrayList<>();
 
         for(int i = 0; i < shoppingCarts.size(); i++){
@@ -28,11 +32,20 @@ public class Store {
         return carts.get(num);
     }
 
-    // public void getOneCart(int num){
+    // public String getOneCart(int num){
+    //     String theCart = "";
+
     //     for(int i = 0; i < shoppingCarts.size(); i++){
     //         if(shoppingCarts.get(i).getUserID() == num){
-    //             System.out.println(shoppingCarts.get(i).getUser() + "'s cart has " + shoppingCarts.get(i).getNumItems() + " items:");
+    //             theCart = (shoppingCarts.get(i).getUser() + "'s cart has " + shoppingCarts.get(i).getNumItems() + " items:");
     //         }
     //     }
+
+    //     return theCart;
     // }
+
+    public void makeSale(int num){
+        sales++;
+        revenue = revenue + shoppingCarts.get(num).getTotal();
+    }
 }

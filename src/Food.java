@@ -1,8 +1,8 @@
 public class Food extends Product {
     private String group;
 
-    public Food(int id, double price, String name, int stock, String group){
-        super(id, price, name, stock);
+    public Food(int id, String category, double price, String name, int stock, String group){
+        super(id, category, price, name, stock);
         this.group = group;
     }
 

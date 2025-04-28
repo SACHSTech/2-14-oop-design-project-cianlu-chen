@@ -1,0 +1,100 @@
+1,Food,2.49,Milk,102,Dairy
+2,Food,3.99,Cheddar Cheese,87,Dairy
+3,Food,1.15,Yogurt,143,Dairy
+4,Food,5.25,Butter,68,Dairy
+5,Food,2.85,Sour Cream,79,Dairy
+6,Food,1.25,Bread,155,Bakery
+7,Food,0.99,Cereal,190,Grain
+8,Food,1.99,Pasta,132,Grain
+9,Food,2.49,Rice,171,Grain
+10,Food,0.85,Oats,116,Grain
+11,Food,0.95,Apple,158,Fruit
+12,Food,0.79,Banana,180,Fruit
+13,Food,1.10,Orange,140,Fruit
+14,Food,2.15,Strawberries,97,Fruit
+15,Food,3.49,Watermelon,60,Fruit
+16,Food,2.99,Blueberries,78,Fruit
+17,Food,2.29,Pineapple,88,Fruit
+18,Food,1.99,Grapes,132,Fruit
+19,Food,3.19,Cherries,56,Fruit
+20,Food,2.75,Raspberries,84,Fruit
+21,Food,5.49,Chicken Breast,72,Meat
+22,Food,4.89,Beef Mince,67,Meat
+23,Food,3.29,Ham,82,Meat
+24,Food,6.99,Turkey,50,Meat
+25,Food,7.25,Lamb Chops,38,Meat
+26,Food,5.95,Pork Chops,54,Meat
+27,Food,8.99,Salmon,41,Seafood
+28,Food,9.25,Shrimp,37,Seafood
+29,Food,7.49,Tuna,46,Seafood
+30,Food,1.25,Broccoli,130,Vegetable
+31,Food,1.15,Tomato,140,Vegetable
+32,Food,1.05,Carrots,165,Vegetable
+33,Food,0.99,Potato,178,Vegetable
+34,Food,1.39,Cucumber,110,Vegetable
+35,Food,1.95,Spinach,125,Vegetable
+36,Food,2.75,Avocado,97,Vegetable
+37,Food,2.45,Mushrooms,101,Vegetable
+38,Food,1.75,Zucchini,108,Vegetable
+39,Food,1.89,Green Beans,92,Vegetable
+40,Food,1.15,Onions,150,Vegetable
+41,Food,0.79,Garlic,172,Vegetable
+42,Food,2.25,Sweet Corn,86,Vegetable
+43,Food,2.99,Yams,63,Vegetable
+44,Food,1.60,Lettuce,130,Vegetable
+45,Food,3.25,Cabbage,84,Vegetable
+46,Food,5.15,Almonds,74,Nuts
+47,Food,4.79,Peanuts,88,Nuts
+48,Food,6.25,Honey,50,Other
+49,Food,2.99,Eggs,120,Dairy
+50,Food,1.20,Watermelon,92,Fruit
+51,Clothes,29.99,Red T-Shirt,48,M
+52,Clothes,59.50,Blue Jeans,32,L
+53,Clothes,19.00,Black Cap,90,S
+54,Clothes,89.99,Green Jacket,22,XL
+55,Clothes,39.95,White Shorts,64,M
+56,Clothes,24.50,Grey Hoodie,58,L
+57,Clothes,45.00,Yellow Dress,26,M
+58,Clothes,35.20,Purple Hat,70,S
+59,Clothes,28.40,Orange Sweater,42,XL
+60,Clothes,54.30,White Blouse,31,M
+61,Clothes,25.90,Green Trousers,39,L
+62,Clothes,33.75,Blue Trousers,35,M
+63,Clothes,49.00,Black Belt,77,M
+64,Clothes,22.10,Red Sneakers,52,S
+65,Clothes,68.90,White Socks,95,L
+66,Clothes,79.99,Green Coat,18,XL
+67,Clothes,21.49,Purple Scarf,81,S
+68,Clothes,37.25,Blue Shirt,45,M
+69,Clothes,58.75,Black Jacket,24,L
+70,Clothes,43.80,Beige Pants,29,M
+71,Clothes,27.10,Grey Shorts,61,M
+72,Clothes,19.80,Yellow Trousers,72,L
+73,Clothes,34.99,Pink Blouse,41,S
+74,Clothes,45.20,White Dress,37,M
+75,Clothes,48.95,Black T-Shirt,54,L
+76,Clothes,53.99,Blue Jeans,33,M
+77,Clothes,18.00,Red Scarf,75,S
+78,Clothes,26.99,Orange T-Shirt,58,M
+79,Clothes,77.20,Brown Coat,20,XL
+80,Clothes,24.95,Blue Cap,82,S
+81,Clothes,46.00,Green Skirt,43,M
+82,Clothes,42.30,Grey Blazer,34,L
+83,Clothes,51.60,Black Blazer,29,XL
+84,Clothes,59.90,Brown Shoes,25,L
+85,Clothes,22.99,White Tank Top,63,S
+86,Clothes,29.50,Blue Tunic,56,M
+87,Clothes,36.80,Green Vest,44,M
+88,Clothes,31.20,Black Pants,50,L
+89,Clothes,39.99,Purple Skirt,47,S
+90,Clothes,44.10,Brown Belt,30,M
+91,Clothes,65.80,Orange Jacket,21,XL
+92,Clothes,22.00,Beige T-Shirt,67,M
+93,Clothes,27.45,White Hoodie,62,L
+94,Clothes,30.25,Red Dress,40,M
+95,Clothes,21.75,Blue Shorts,69,M
+96,Clothes,23.99,Pink Hat,79,S
+97,Clothes,47.95,Green T-Shirt,49,M
+98,Clothes,41.00,Blue Blazer,36,L
+99,Clothes,38.20,Black Sneakers,53,S
+100,Clothes,25.90,Beige Tunic,50,M
