@@ -121,7 +121,7 @@ public class Main{
                     for(int i = 0; i < store.getNumCarts(); i++){
                         if(store.getShoppingCart(i).getUserID() == choice){
                             for(int j = 0; j < store.getShoppingCart(choice).getNumProducts(); j++){
-                                System.out.println(store.getShoppingCart(choice).getProducts(j));
+                                System.out.println(store.getShoppingCart(choice).getProducts(j) + " ID: " + store.getShoppingCart(choice).getAProduct(j).getID());
                             }
                         }
                     }
@@ -129,8 +129,8 @@ public class Main{
                     System.out.print("Please enter the ID of the item you wish to remove: ");
                     itemChoice = Integer.parseInt(userChoice.readLine());
                     
-                    store.getShoppingCart(choice).addProduct(products.get(itemChoice - 1));
-                    System.out.println(products.get(itemChoice - 1).getName() + " added to " + store.getShoppingCart(choice).getUser() + "'s cart");
+                    store.getShoppingCart(choice).removeProduct(itemChoice);
+                    System.out.println(products.get(itemChoice - 1).getName() + " removed from " + store.getShoppingCart(choice).getUser() + "'s cart");
 
                     break;
 
@@ -142,11 +142,11 @@ public class Main{
 
                     System.out.println("-----Thank you for checking out-----");
                     for(int i = 0; i < store.getShoppingCart(choice).getNumProducts(); i++){
-                        System.out.println(store.getShoppingCart(choice).getProducts(i) + ", $" + store.getShoppingCart(choice).getAProduct(i).getPrice() * store.getShoppingCart(choice).getAProduct(i).getNumInCart());
+                        System.out.println(store.getShoppingCart(choice).getProducts(i) + ", $" + store.getShoppingCart(choice).getAProduct(i).getPrice());
                     }
 
-                    System.out.println("Subtotal: $" + store.getShoppingCart(choice).getSubtotal());
-                    System.out.format("Total (Tax 13%%): $%.2f%n", store.getShoppingCart(choice).getTotal());
+                    System.out.printf("Subtotal: $%.2f%n", store.getShoppingCart(choice).getSubtotal());
+                    System.out.printf("Total (Tax 13%%): $%.2f%n", store.getShoppingCart(choice).getTotal());
 
                     store.getShoppingCart(choice).removeAll();
 
@@ -154,7 +154,7 @@ public class Main{
 
                 case 9:
                     System.out.println("Total sales: " + store.getSales());
-                    System.out.printf("Total revenue: $%.f%n", store.getRevenue());
+                    System.out.printf("Total revenue: $%.2f%n", store.getRevenue());
                 
                     break;
 

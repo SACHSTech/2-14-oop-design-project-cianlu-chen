@@ -4,7 +4,6 @@ public abstract class Product {
     private double price;
     private String name;
     private int stock;
-    private int numInCart = 0;
 
     public Product(int id, String category, double price, String name, int stock){
         this.id = id;
@@ -36,13 +35,5 @@ public abstract class Product {
 
     public void setStock(){
         stock--;
-    }
-
-    public int getNumInCart(){
-        return numInCart;
-    }
-
-    public void setNumInCart(){
-        numInCart++;
     }
 }

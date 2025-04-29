@@ -13,27 +13,10 @@ public class ShoppingCart {
     }
 
     public void addProduct(Product product){
-        boolean noDupe = true;
         if(product.getStock() > 0){
             product.setStock();
+            products.add(product);
             numItems++;
-
-            for(int i = 0; i < products.size(); i++){
-                if(product.getID() != products.get(i).getID()){
-                    noDupe = true;
-                }
-
-                else{
-                    noDupe = false;
-                    products.get(products.size() - 1).setNumInCart();
-                    break;
-                }
-            }
-
-            if(noDupe){
-                products.add(product);
-                products.get(products.size() - 1).setNumInCart();
-            }
         }
 
         else{
@@ -45,6 +28,7 @@ public class ShoppingCart {
         for(int i = 0; i < products.size(); i++){
             if(products.get(i).getID() == num){
                 products.remove(i);
+                numItems--;
             }
         }
     }
@@ -52,7 +36,7 @@ public class ShoppingCart {
     public String getProducts(int i){
         List<String> productNames = new ArrayList<>();
         for(int j = 0; j < products.size(); j++){
-            productNames.add(products.get(j).getName() + " x" + products.get(j).getNumInCart());
+            productNames.add(products.get(j).getName());
         }
 
         return productNames.get(i);
@@ -81,7 +65,7 @@ public class ShoppingCart {
     public double getSubtotal(){
         double subtotal = 0.0;
         for(int i = 0; i < products.size(); i++){
-            subtotal += products.get(i).getPrice() * products.get(i).getNumInCart();
+            subtotal += products.get(i).getPrice();
         }
 
         return subtotal;
@@ -90,7 +74,7 @@ public class ShoppingCart {
     public double getTotal(){
         double subtotal = 0.0;
         for(int i = 0; i < products.size(); i++){
-            subtotal += products.get(i).getPrice() * products.get(i).getNumInCart();;
+            subtotal += products.get(i).getPrice();
         }
 
         double total = subtotal * 1.13;
