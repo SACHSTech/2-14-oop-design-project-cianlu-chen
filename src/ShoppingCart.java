@@ -4,6 +4,7 @@ import java.util.List;
 public class ShoppingCart {
     private String user;
     private int userID;
+    private int numItems = 0;
     private List<Product> products = new ArrayList<>();
     
     public ShoppingCart(String user, int userID){
@@ -12,10 +13,27 @@ public class ShoppingCart {
     }
 
     public void addProduct(Product product){
+        boolean noDupe = true;
         if(product.getStock() > 0){
-            products.add(product);
             product.setStock();
-            product.setNumInCart();
+            numItems++;
+
+            for(int i = 0; i < products.size(); i++){
+                if(product.getID() != products.get(i).getID()){
+                    noDupe = true;
+                }
+
+                else{
+                    noDupe = false;
+                    products.get(products.size() - 1).setNumInCart();
+                    break;
+                }
+            }
+
+            if(noDupe){
+                products.add(product);
+                products.get(products.size() - 1).setNumInCart();
+            }
         }
 
         else{
@@ -36,8 +54,12 @@ public class ShoppingCart {
         return products.get(i);
     }
 
-    public int getNumItems(){
+    public int getNumProducts(){
         return products.size();
+    }
+
+    public int getNumItems(){
+        return numItems;
     }
 
     public String getUser(){
@@ -51,7 +73,7 @@ public class ShoppingCart {
     public double getSubtotal(){
         double subtotal = 0.0;
         for(int i = 0; i < products.size(); i++){
-            subtotal += products.get(i).getPrice();
+            subtotal += products.get(i).getPrice() * products.get(i).getNumInCart();
         }
 
         return subtotal;
@@ -60,11 +82,16 @@ public class ShoppingCart {
     public double getTotal(){
         double subtotal = 0.0;
         for(int i = 0; i < products.size(); i++){
-            subtotal += products.get(i).getPrice();
+            subtotal += products.get(i).getPrice() * products.get(i).getNumInCart();;
         }
 
         double total = subtotal * 1.13;
 
         return total;
+    }
+
+    public void removeAll(){
+        products.clear();
+        numItems = 0;
     }
 }

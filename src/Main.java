@@ -15,21 +15,6 @@ public class Main{
 
         readProducts();
 
-        // ShoppingCart cart1 = new ShoppingCart( "Dan", 1);
-        // ShoppingCart cart2 = new ShoppingCart( "Kim", 2);
-        // Product shirt = new Clothes(0, 7.99, "Shirt", 30, "S", "White");
-        // Product apple = new Food(1, 2.99, "Apple", 10, "Fruit");
-
-        // store.addCart(cart1);
-        // store.addCart(cart2);
-
-        // cart1.addProduct(shirt);
-        // cart1.addProduct(apple);
-
-        // for(int i = 0; i < cart1.getNumItems(); i++){
-        //     System.out.println(cart1.getProducts(i));
-        // }
-
         while(choice != 10){
             System.out.println("---Option Menu---");
             System.out.println("1. Create a user");
@@ -70,8 +55,8 @@ public class Main{
                     System.out.println(store.getACart(choice));
 
                     for(int i = 0; i < store.getNumCarts(); i++){
-                        if(i == choice){
-                            for(int j = 0; j < store.getShoppingCart(j).getNumItems(); j++){
+                        if(store.getShoppingCart(i).getUserID() == choice){
+                            for(int j = 0; j < store.getShoppingCart(choice).getNumProducts(); j++){
                                 System.out.println(store.getShoppingCart(choice).getProducts(j));
                             }
                         }
@@ -84,19 +69,83 @@ public class Main{
                     
                     break;
 
-                case 9:
+                case 5:
+                    System.out.println("---Option Menu---");
+                    System.out.println("1. Food");
+                    System.out.println("2. Clothes");
+                    System.out.print("Choose a menu option: ");
+                    choice = Integer.parseInt(userChoice.readLine());
+                    switch(choice){
+                        case 1:
+                            System.out.println("---Displaying all food items---");
+                            for(int i = 0; i < products.size(); i++){
+                                if(products.get(i).getClass().equals(Food.class)){
+                                    System.out.println(products.get(i));
+                                }
+                            }
+
+                            break;
+                        
+                        case 2:
+                            System.out.println("---Displaying all clothing items---");
+                            for(int i = 0; i < products.size(); i++){
+                                if(products.get(i).getClass().equals(Clothes.class)){
+                                    System.out.println(products.get(i));
+                                }
+                            }
+
+                            break;
+                    }
+
+                    break;
+
+                case 6:
+                    System.out.print("Please enter the user ID of the cart you wish to add an item to: ");
+                    choice = Integer.parseInt(userChoice.readLine());
+
+                    System.out.print("Please enter the ID of the item you wish to add: ");
+                    int itemChoice = Integer.parseInt(userChoice.readLine());
+                    
+                    store.getShoppingCart(choice).addProduct(products.get(itemChoice - 1));
+                    System.out.println(products.get(itemChoice - 1).getName() + " added to " + store.getShoppingCart(choice).getUser() + "'s cart");
+
+                    break;
+
+                case 7:
+
+                case 8:
                     System.out.print("Please enter the user ID of the cart you wish to checkout: ");
                     choice = Integer.parseInt(userChoice.readLine());
 
                     store.makeSale(choice);
 
                     System.out.println("-----Thank you for checking out-----");
-                    for(int i = 0; i < store.getShoppingCart(i).getNumItems(); i++){
-                        System.out.println(store.getShoppingCart(i).getProducts(i) + ", $" + store.getShoppingCart(i).getAProduct(i).getPrice() * store.getShoppingCart(i).getAProduct(i).getNumInCart());
+                    for(int i = 0; i < store.getShoppingCart(choice).getNumProducts(); i++){
+                        System.out.println(store.getShoppingCart(choice).getProducts(i) + ", $" + store.getShoppingCart(choice).getAProduct(i).getPrice() * store.getShoppingCart(choice).getAProduct(i).getNumInCart());
                     }
 
                     System.out.println("Subtotal: $" + store.getShoppingCart(choice).getSubtotal());
-                    System.out.format("Total (Tax 13%): $%2f", store.getShoppingCart(choice).getTotal());
+                    System.out.format("Total (Tax 13%%): $%.2f%n", store.getShoppingCart(choice).getTotal());
+
+                    store.getShoppingCart(choice).removeAll();
+
+                    break;
+
+                case 9:
+                    System.out.println("Total sales: " + store.getSales());
+                    System.out.printf("Total revenue: $%.f%n", store.getRevenue());
+                
+                    break;
+
+                case 10:
+                    System.out.println("Thank you for shopping!");
+
+                    break;
+
+                default:
+                    System.out.println("That's not a valid choice.");
+
+                    break;
             }
         }
     }

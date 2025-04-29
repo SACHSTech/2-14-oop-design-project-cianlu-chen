@@ -32,20 +32,16 @@ public class Store {
         return carts.get(num);
     }
 
-    // public String getOneCart(int num){
-    //     String theCart = "";
-
-    //     for(int i = 0; i < shoppingCarts.size(); i++){
-    //         if(shoppingCarts.get(i).getUserID() == num){
-    //             theCart = (shoppingCarts.get(i).getUser() + "'s cart has " + shoppingCarts.get(i).getNumItems() + " items:");
-    //         }
-    //     }
-
-    //     return theCart;
-    // }
-
     public void makeSale(int num){
         sales++;
         revenue = revenue + shoppingCarts.get(num).getTotal();
+    }
+
+    public int getSales(){
+        return sales;
+    }
+
+    public double getRevenue(){
+        return revenue;
     }
 }
