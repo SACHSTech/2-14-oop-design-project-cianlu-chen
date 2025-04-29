@@ -11,6 +11,7 @@ public class Main{
         BufferedReader userChoice = new BufferedReader(new InputStreamReader(System.in));
         int choice = 0;
         int userID = 0;
+        int itemChoice = 0;
         Store store = new Store();
 
         readProducts();
@@ -104,7 +105,7 @@ public class Main{
                     choice = Integer.parseInt(userChoice.readLine());
 
                     System.out.print("Please enter the ID of the item you wish to add: ");
-                    int itemChoice = Integer.parseInt(userChoice.readLine());
+                    itemChoice = Integer.parseInt(userChoice.readLine());
                     
                     store.getShoppingCart(choice).addProduct(products.get(itemChoice - 1));
                     System.out.println(products.get(itemChoice - 1).getName() + " added to " + store.getShoppingCart(choice).getUser() + "'s cart");
@@ -112,6 +113,26 @@ public class Main{
                     break;
 
                 case 7:
+                    System.out.print("Please enter the user ID of the cart you wish to remove an item from: ");
+                    choice = Integer.parseInt(userChoice.readLine());
+
+                    System.out.println(store.getACart(choice));
+
+                    for(int i = 0; i < store.getNumCarts(); i++){
+                        if(store.getShoppingCart(i).getUserID() == choice){
+                            for(int j = 0; j < store.getShoppingCart(choice).getNumProducts(); j++){
+                                System.out.println(store.getShoppingCart(choice).getProducts(j));
+                            }
+                        }
+                    }
+
+                    System.out.print("Please enter the ID of the item you wish to remove: ");
+                    itemChoice = Integer.parseInt(userChoice.readLine());
+                    
+                    store.getShoppingCart(choice).addProduct(products.get(itemChoice - 1));
+                    System.out.println(products.get(itemChoice - 1).getName() + " added to " + store.getShoppingCart(choice).getUser() + "'s cart");
+
+                    break;
 
                 case 8:
                     System.out.print("Please enter the user ID of the cart you wish to checkout: ");

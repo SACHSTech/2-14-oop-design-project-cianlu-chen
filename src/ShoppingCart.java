@@ -41,6 +41,14 @@ public class ShoppingCart {
         }
     }
 
+    public void removeProduct(int num){
+        for(int i = 0; i < products.size(); i++){
+            if(products.get(i).getID() == num){
+                products.remove(i);
+            }
+        }
+    }
+
     public String getProducts(int i){
         List<String> productNames = new ArrayList<>();
         for(int j = 0; j < products.size(); j++){
