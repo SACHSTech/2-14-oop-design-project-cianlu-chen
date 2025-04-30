@@ -53,11 +53,21 @@ public class Main{
                     System.out.print("Please enter the user ID of the cart you wish to view: ");
                     choice = Integer.parseInt(userChoice.readLine());
 
+                    try{
+                        store.getShoppingCart(choice);
+                    }
+
+                    catch(Exception e){
+                        System.out.println("There's no cart with that user ID.");
+
+                        break;
+                    } 
+
                     System.out.println(store.getACart(choice));
 
                     for(int i = 0; i < store.getNumCarts(); i++){
                         if(store.getShoppingCart(i).getUserID() == choice){
-                            for(int j = 0; j < store.getShoppingCart(choice).getNumProducts(); j++){
+                            for(int j = 0; j < store.getShoppingCart(choice).getNumItems(); j++){
                                 System.out.println(store.getShoppingCart(choice).getProducts(j));
                             }
                         }
@@ -96,6 +106,11 @@ public class Main{
                             }
 
                             break;
+
+                        default:
+                            System.out.println("Invalid choice.");
+
+                            break;
                     }
 
                     break;
@@ -104,9 +119,29 @@ public class Main{
                     System.out.print("Please enter the user ID of the cart you wish to add an item to: ");
                     choice = Integer.parseInt(userChoice.readLine());
 
+                    try{
+                        store.getShoppingCart(choice);
+                    }
+
+                    catch(Exception e){
+                        System.out.println("There's no cart with that user ID.");
+
+                        break;
+                    } 
+
                     System.out.print("Please enter the ID of the item you wish to add: ");
                     itemChoice = Integer.parseInt(userChoice.readLine());
                     
+                    try{
+                        store.getShoppingCart(choice).getAProduct(itemChoice);   
+                    }
+
+                    catch(Exception e){
+                        System.out.println("There is no item with that ID in the cart.");
+
+                        break;
+                    }
+
                     store.getShoppingCart(choice).addProduct(products.get(itemChoice - 1));
                     System.out.println(products.get(itemChoice - 1).getName() + " added to " + store.getShoppingCart(choice).getUser() + "'s cart");
 
@@ -116,11 +151,19 @@ public class Main{
                     System.out.print("Please enter the user ID of the cart you wish to remove an item from: ");
                     choice = Integer.parseInt(userChoice.readLine());
 
-                    System.out.println(store.getACart(choice));
+                    try{
+                        store.getShoppingCart(choice);
+                    }
 
+                    catch(Exception e){
+                        System.out.println("There's no cart with that user ID.");
+
+                        break;
+                    }    
+    
                     for(int i = 0; i < store.getNumCarts(); i++){
                         if(store.getShoppingCart(i).getUserID() == choice){
-                            for(int j = 0; j < store.getShoppingCart(choice).getNumProducts(); j++){
+                            for(int j = 0; j < store.getShoppingCart(choice).getNumItems(); j++){
                                 System.out.println(store.getShoppingCart(choice).getProducts(j) + " ID: " + store.getShoppingCart(choice).getAProduct(j).getID());
                             }
                         }
@@ -129,8 +172,18 @@ public class Main{
                     System.out.print("Please enter the ID of the item you wish to remove: ");
                     itemChoice = Integer.parseInt(userChoice.readLine());
                     
-                    store.getShoppingCart(choice).removeProduct(itemChoice);
-                    System.out.println(products.get(itemChoice - 1).getName() + " removed from " + store.getShoppingCart(choice).getUser() + "'s cart");
+                    try{
+                        store.getShoppingCart(choice).getAProduct(itemChoice);   
+                    }
+
+                    catch(Exception e){
+                        System.out.println("There is no item with that ID in the cart.");
+
+                        break;
+                    }
+                
+                    store.getShoppingCart(choice).removeProduct(itemChoice);   
+                    System.out.println(products.get(itemChoice - 1).getName() + " removed from " + store.getShoppingCart(choice).getUser() + "'s cart"); 
 
                     break;
 
@@ -138,10 +191,20 @@ public class Main{
                     System.out.print("Please enter the user ID of the cart you wish to checkout: ");
                     choice = Integer.parseInt(userChoice.readLine());
 
+                    try{
+                        store.getShoppingCart(choice);
+                    }
+                    
+                    catch(Exception e){
+                        System.out.println("There's no cart with that user ID.");
+
+                        break;
+                    } 
+
                     store.makeSale(choice);
 
-                    System.out.println("-----Thank you for checking out-----");
-                    for(int i = 0; i < store.getShoppingCart(choice).getNumProducts(); i++){
+                    System.out.println("---Thank you for checking out---");
+                    for(int i = 0; i < store.getShoppingCart(choice).getNumItems(); i++){
                         System.out.println(store.getShoppingCart(choice).getProducts(i) + ", $" + store.getShoppingCart(choice).getAProduct(i).getPrice());
                     }
 
@@ -171,11 +234,11 @@ public class Main{
         }
     }
 
-     public static void readProducts(){
-        try (BufferedReader productReader = new BufferedReader(new FileReader("src\\products.csv"))){
+    public static void readProducts(){
+        try(BufferedReader productReader = new BufferedReader(new FileReader("src\\products.csv"))){
             String product;
 
-            while ((product = productReader.readLine()) != null){
+            while((product = productReader.readLine()) != null){
                 String[] values = product.split(",");
 
                 int id = Integer.parseInt(values[0]);
@@ -199,7 +262,7 @@ public class Main{
             }
         }
     
-        catch (IOException e){
+        catch(IOException e){
                 
         }
     }

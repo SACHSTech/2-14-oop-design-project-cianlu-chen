@@ -4,7 +4,6 @@ import java.util.List;
 public class ShoppingCart {
     private String user;
     private int userID;
-    private int numItems = 0;
     private List<Product> products = new ArrayList<>();
     
     public ShoppingCart(String user, int userID){
@@ -16,7 +15,6 @@ public class ShoppingCart {
         if(product.getStock() > 0){
             product.setStock();
             products.add(product);
-            numItems++;
         }
 
         else{
@@ -28,7 +26,6 @@ public class ShoppingCart {
         for(int i = 0; i < products.size(); i++){
             if(products.get(i).getID() == num){
                 products.remove(i);
-                numItems--;
             }
         }
     }
@@ -46,12 +43,8 @@ public class ShoppingCart {
         return products.get(i);
     }
 
-    public int getNumProducts(){
-        return products.size();
-    }
-
     public int getNumItems(){
-        return numItems;
+        return products.size();
     }
 
     public String getUser(){
@@ -84,6 +77,5 @@ public class ShoppingCart {
 
     public void removeAll(){
         products.clear();
-        numItems = 0;
     }
 }
