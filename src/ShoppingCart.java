@@ -30,17 +30,17 @@ public class ShoppingCart {
         }
     }
 
-    public String getProducts(int i){
+    public String printProductName(int num){
         List<String> productNames = new ArrayList<>();
-        for(int j = 0; j < products.size(); j++){
-            productNames.add(products.get(j).getName());
+        for(int i = 0; i < products.size(); i++){
+            productNames.add(products.get(i).getName());
         }
 
-        return productNames.get(i);
+        return productNames.get(num);
     }
 
-    public Product getAProduct(int i){
-        return products.get(i);
+    public Product getAProduct(int num){
+        return products.get(num);
     }
 
     public int getNumItems(){
@@ -77,5 +77,31 @@ public class ShoppingCart {
 
     public void removeAll(){
         products.clear();
+    }
+
+    public boolean isEmpty(){
+        if(products.size() == 0){
+            return true;
+        }
+
+        else{
+            return false;
+        }
+    }
+
+    public boolean productInCart(int num){
+        boolean inCart = false;
+        for(int i = 0; i < products.size(); i++){
+            if(products.get(i).getID() == num){
+                inCart = true;
+
+            } 
+
+            else{
+                inCart = false;
+            }
+        } 
+
+        return inCart;
     }
 }

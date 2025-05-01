@@ -44,7 +44,7 @@ public class Main{
 
                 case 2:
                     for(int i = 0; i < store.getNumCarts(); i++){
-                        System.out.println(store.getACart(i));
+                        System.out.println(store.printACart(i));
                     }
 
                     break;
@@ -63,12 +63,12 @@ public class Main{
                         break;
                     } 
 
-                    System.out.println(store.getACart(choice));
+                    System.out.println(store.printACart(choice));
 
                     for(int i = 0; i < store.getNumCarts(); i++){
                         if(store.getShoppingCart(i).getUserID() == choice){
                             for(int j = 0; j < store.getShoppingCart(choice).getNumItems(); j++){
-                                System.out.println(store.getShoppingCart(choice).getProducts(j));
+                                System.out.println(store.getShoppingCart(choice).printProductName(j));
                             }
                         }
                     }
@@ -133,11 +133,11 @@ public class Main{
                     itemChoice = Integer.parseInt(userChoice.readLine());
                     
                     try{
-                        store.getShoppingCart(choice).getAProduct(itemChoice);   
+                        products.get(itemChoice);   
                     }
 
                     catch(Exception e){
-                        System.out.println("There is no item with that ID in the cart.");
+                        System.out.println("There is no product with that ID.");
 
                         break;
                     }
@@ -161,30 +161,32 @@ public class Main{
                         break;
                     }    
     
+                    if(store.getShoppingCart(choice).isEmpty()){
+                        System.out.println("This cart is empty.");
+
+                        break;
+                    }
+
                     for(int i = 0; i < store.getNumCarts(); i++){
                         if(store.getShoppingCart(i).getUserID() == choice){
                             for(int j = 0; j < store.getShoppingCart(choice).getNumItems(); j++){
-                                System.out.println(store.getShoppingCart(choice).getProducts(j) + " ID: " + store.getShoppingCart(choice).getAProduct(j).getID());
+                                System.out.println(store.getShoppingCart(choice).printProductName(j) + " ID: " + store.getShoppingCart(choice).getAProduct(j).getID());
                             }
                         }
                     }
 
                     System.out.print("Please enter the ID of the item you wish to remove: ");
                     itemChoice = Integer.parseInt(userChoice.readLine());
-                    
-                    try{
-                        store.getShoppingCart(choice).getAProduct(itemChoice);   
+    
+                    if(store.getShoppingCart(choice).productInCart(itemChoice)){
+                        store.getShoppingCart(choice).removeProduct(itemChoice);
+                        System.out.println(products.get(itemChoice - 1).getName() + " removed from " + store.getShoppingCart(choice).getUser() + "'s cart");
                     }
 
-                    catch(Exception e){
-                        System.out.println("There is no item with that ID in the cart.");
-
-                        break;
+                    else{
+                        System.out.println("That item is not in your cart.");
                     }
-                
-                    store.getShoppingCart(choice).removeProduct(itemChoice);   
-                    System.out.println(products.get(itemChoice - 1).getName() + " removed from " + store.getShoppingCart(choice).getUser() + "'s cart"); 
-
+        
                     break;
 
                 case 8:
@@ -201,17 +203,23 @@ public class Main{
                         break;
                     } 
 
-                    store.makeSale(choice);
-
-                    System.out.println("---Thank you for checking out---");
-                    for(int i = 0; i < store.getShoppingCart(choice).getNumItems(); i++){
-                        System.out.println(store.getShoppingCart(choice).getProducts(i) + ", $" + store.getShoppingCart(choice).getAProduct(i).getPrice());
+                    if(store.getShoppingCart(choice).isEmpty()){
+                        System.out.println("There are no items in that cart.");
                     }
 
-                    System.out.printf("Subtotal: $%.2f%n", store.getShoppingCart(choice).getSubtotal());
-                    System.out.printf("Total (Tax 13%%): $%.2f%n", store.getShoppingCart(choice).getTotal());
+                    else{
+                        store.makeSale(choice);
 
-                    store.getShoppingCart(choice).removeAll();
+                        System.out.println("---Thank you for checking out---");
+                        for(int i = 0; i < store.getShoppingCart(choice).getNumItems(); i++){
+                            System.out.println(store.getShoppingCart(choice).printProductName(i) + ", $" + store.getShoppingCart(choice).getAProduct(i).getPrice());
+                        }
+
+                        System.out.printf("Subtotal: $%.2f%n", store.getShoppingCart(choice).getSubtotal());
+                        System.out.printf("Total (Tax 13%%): $%.2f%n", store.getShoppingCart(choice).getTotal());
+
+                        store.getShoppingCart(choice).removeAll();
+                    }
 
                     break;
 

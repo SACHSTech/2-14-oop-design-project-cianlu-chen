@@ -22,7 +22,7 @@ public class Store {
         return shoppingCarts.size();
     }
 
-    public String getACart(int num){
+    public String printACart(int num){
         List<String> carts = new ArrayList<>();
 
         for(int i = 0; i < shoppingCarts.size(); i++){
