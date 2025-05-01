@@ -33,7 +33,11 @@ public abstract class Product {
         return stock;
     }
 
-    public void setStock(){
+    public void removeStock(){
         stock--;
+    }
+
+    public void addStock(){
+        stock++;
     }
 }

@@ -13,7 +13,7 @@ public class ShoppingCart {
 
     public void addProduct(Product product){
         if(product.getStock() > 0){
-            product.setStock();
+            product.removeStock();
             products.add(product);
         }
 
@@ -26,6 +26,7 @@ public class ShoppingCart {
         for(int i = 0; i < products.size(); i++){
             if(products.get(i).getID() == num){
                 products.remove(i);
+                products.get(i).addStock();
             }
         }
     }
