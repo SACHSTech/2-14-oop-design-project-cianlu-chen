@@ -143,7 +143,10 @@ public class Main{
                     }
 
                     store.getShoppingCart(choice).addProduct(products.get(itemChoice - 1));
-                    System.out.println(products.get(itemChoice - 1).getName() + " added to " + store.getShoppingCart(choice).getUser() + "'s cart");
+                    
+                    if(products.get(itemChoice - 1).inStock()){
+                        System.out.println(products.get(itemChoice - 1).getName() + " added to " + store.getShoppingCart(choice).getUser() + "'s cart");
+                    }
 
                     break;
 

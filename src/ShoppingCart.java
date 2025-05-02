@@ -12,7 +12,7 @@ public class ShoppingCart {
     }
 
     public void addProduct(Product product){
-        if(product.getStock() > 0){
+        if(product.inStock()){
             product.removeStock();
             products.add(product);
         }
@@ -90,7 +90,6 @@ public class ShoppingCart {
         for(int i = 0; i < products.size(); i++){
             if(products.get(i).getID() == num){
                 inCart = true;
-
             } 
 
             else{

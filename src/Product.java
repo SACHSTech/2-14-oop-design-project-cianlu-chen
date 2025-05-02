@@ -40,4 +40,14 @@ public abstract class Product {
     public void addStock(){
         stock++;
     }
+
+    public boolean inStock(){
+        if(getStock() > 0){
+            return true;
+        }
+
+        else{
+            return false;
+        }
+    }
 }
