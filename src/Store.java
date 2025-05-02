@@ -14,8 +14,8 @@ public class Store {
         shoppingCarts.add(shoppingCart);
     }
 
-    public ShoppingCart getShoppingCart(int i){
-        return shoppingCarts.get(i);
+    public ShoppingCart getShoppingCart(int num){
+        return shoppingCarts.get(num);
     }
     
     public int getNumCarts(){

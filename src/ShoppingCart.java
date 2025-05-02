@@ -31,10 +31,6 @@ public class ShoppingCart {
         }
     }
 
-    public String getProductName(int num){
-        return products.get(num).getName();
-    }
-
     public Product getAProduct(int num){
         return products.get(num);
     }
