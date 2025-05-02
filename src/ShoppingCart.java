@@ -31,13 +31,8 @@ public class ShoppingCart {
         }
     }
 
-    public String printProductName(int num){
-        List<String> productNames = new ArrayList<>();
-        for(int i = 0; i < products.size(); i++){
-            productNames.add(products.get(i).getName());
-        }
-
-        return productNames.get(num);
+    public String getProductName(int num){
+        return products.get(num).getName();
     }
 
     public Product getAProduct(int num){
