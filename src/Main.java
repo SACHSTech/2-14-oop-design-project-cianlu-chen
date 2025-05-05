@@ -68,7 +68,7 @@ public class Main{
                     for(int i = 0; i < store.getNumCarts(); i++){
                         if(store.getShoppingCart(i).getUserID() == choice){
                             for(int j = 0; j < store.getShoppingCart(choice).getNumItems(); j++){
-                                System.out.println(store.getShoppingCart(choice).getAProduct(j).getName());
+                                System.out.println(store.getShoppingCart(choice).getProduct(j).getName());
                             }
                         }
                     }
@@ -173,7 +173,7 @@ public class Main{
                     for(int i = 0; i < store.getNumCarts(); i++){
                         if(store.getShoppingCart(i).getUserID() == choice){
                             for(int j = 0; j < store.getShoppingCart(choice).getNumItems(); j++){
-                                System.out.println(store.getShoppingCart(choice).getAProduct(j).getName() + " ID: " + store.getShoppingCart(choice).getAProduct(j).getID());
+                                System.out.println(store.getShoppingCart(choice).getProduct(j).getName() + " ID: " + store.getShoppingCart(choice).getProduct(j).getID());
                             }
                         }
                     }
@@ -215,7 +215,7 @@ public class Main{
 
                         System.out.println("---Thank you for checking out---");
                         for(int i = 0; i < store.getShoppingCart(choice).getNumItems(); i++){
-                            System.out.println(store.getShoppingCart(choice).getAProduct(i).getName() + ", $" + store.getShoppingCart(choice).getAProduct(i).getPrice());
+                            System.out.println(store.getShoppingCart(choice).getProduct(i).getName() + ", $" + store.getShoppingCart(choice).getProduct(i).getPrice());
                         }
 
                         System.out.printf("Subtotal: $%.2f%n", store.getShoppingCart(choice).getSubtotal());

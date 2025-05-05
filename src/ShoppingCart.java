@@ -31,7 +31,7 @@ public class ShoppingCart {
         }
     }
 
-    public Product getAProduct(int num){
+    public Product getProduct(int num){
         return products.get(num);
     }
 
